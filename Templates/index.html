@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Analysis with AI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-image: url("{{ url_for('static', filename='Presentation1.jpg') }}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        h1, h2, h3 {
+            color: #333;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        textarea {
+            width: 100%;
+            height: 120px;
+            resize: vertical;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="file"] {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            display: block;
+            margin: 20px 0;
+            padding: 12px 24px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .generated-commentary {
+            margin-top: 40px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            background-color: #fff;
+        }
+
+        pre {
+            font-family: monospace;
+            background-color: #f1f1f1;
+            padding: 20px;
+            overflow: auto;
+            font-size: 14px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Data Analysis with AI</h1>
+        <form method="post" enctype="multipart/form-data">
+            <label for="pdf_file">Upload a PDF file:</label>
+            <input type="file" name="pdf_file" id="pdf_file" required><br>
+
+            <label for="prompt_text">Enter your prompt:</label><br>
+            <textarea name="prompt_text" rows="6" placeholder="Type your prompt here..." required></textarea><br>
+
+            <input type="submit" value="Generate Commentary">
+        </form>
+
+        {% if result %}
+            <div class="generated-commentary">
+                <h2>Generated Commentary:</h2>
+                <pre>{{ result }}</pre>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
