@@ -1,6 +1,6 @@
 import os
 from flask import Flask, render_template, request, session
-
+import gunicorn
 from langchain.document_loaders import PyMuPDFLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import Chroma
